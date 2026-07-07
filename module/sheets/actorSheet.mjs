@@ -16,18 +16,15 @@ export default class Gfv1ActorSheet extends HandlebarsApplicationMixin(
   static TABS = []; // ids of tabs used by sheet
 
   static get DEFAULT_OPTIONS() {
-    const actions = foundry.utils.mergeObject(
-      {
-        editImage: this._onEditImage,
-        createDoc: this._createDoc,
-        viewDoc: DocumentHelper.viewDoc,
-        deleteDoc: DocumentHelper.deleteDoc,
-        makeRoll: this._roll,
-        toggleEdit: this._toggleEdit,
-        embraceTag: this._embraceTag,
-      },
-      this.ACTIONS,
-    );
+    let actions = {
+		editImage: this._onEditImage,
+		createDoc: this._createDoc,
+		viewDoc: DocumentHelper.viewDoc,
+		deleteDoc: DocumentHelper.deleteDoc,
+		makeRoll: this._roll,
+		toggleEdit: this._toggleEdit,
+		embraceTag: this._embraceTag,
+	  }
     return {
       tag: "form",
       classes: ["gfv1", "sheet", "actor-sheet"],
@@ -59,8 +56,15 @@ export default class Gfv1ActorSheet extends HandlebarsApplicationMixin(
   }
 
   get title() {
-    if (this.actor.system.pronouns) {
-      return `${this.actor.name} (${this.actor.system.pronouns})`;
+	  let pronouns = this.actor.system?.pronouns;
+	  let legalPronouns = this.actor.system?.legalPronouns;
+	  let preferredPronouns = this.actor.system?.preferredPronouns;
+    if (pronouns) {
+      return `${this.actor.name} (${pronouns})`;
+    } else if (legalPronouns && preferredPronouns){
+      return `${this.actor.name} (${legalPronouns}(${preferredPronouns}))`;
+    } else if (legalPronouns || preferredPronouns){
+      return `${this.actor.name} (${legalPronouns ?? preferredPronouns})`;
     }
     return this.actor.name;
   }

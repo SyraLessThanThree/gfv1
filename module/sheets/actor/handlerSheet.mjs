@@ -6,6 +6,14 @@ import Gfv1ActorSheet from "../actorSheet.mjs";
 const TABS = ["description", "actor", "handler", "strain"];
 
 export default class HandlerSheet extends Gfv1ActorSheet {
+  static get DEFAULT_OPTIONS() {
+	let options = Gfv1ActorSheet.DEFAULT_OPTIONS;
+	options.actions = foundry.utils.mergeObject(
+      options.actions,
+      this.ACTIONS
+    );
+	return options;
+  }
   static TABS = TABS;
   tabs = new Tabs(TABS, "primary");
 
