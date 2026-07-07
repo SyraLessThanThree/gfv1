@@ -62,9 +62,19 @@ export default class Gfv1ActorSheet extends HandlebarsApplicationMixin(
     if (pronouns) {
       return `${this.actor.name} (${pronouns})`;
     } else if (legalPronouns && preferredPronouns){
-      return `${this.actor.name} (${legalPronouns}(${preferredPronouns}))`;
+      return `${this.actor.name} (${legalPronouns};(${preferredPronouns}))`;
     } else if (legalPronouns || preferredPronouns){
-      return `${this.actor.name} (${legalPronouns ?? preferredPronouns})`;
+      let pronouns = "";
+      if(legalPronouns){
+        pronouns = legalPronouns;
+      } else if (preferredPronouns){
+        pronouns = preferredPronouns;
+      }
+      if(pronouns){
+        return `${this.actor.name} (${pronouns})`;
+      }else{
+        return this.actor.name;
+      }
     }
     return this.actor.name;
   }

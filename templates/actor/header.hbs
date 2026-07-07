@@ -21,5 +21,35 @@
         }}
       </div>
     {{/if}}
+    {{#if (defined system.legalPronouns)}}
+      <div>
+        <label>{{localize "GFv1.actor.legalPronouns"}}</label>
+        {{formInput
+          systemFields.legalPronouns
+          value=system.legalPronouns
+          disabled=locked
+        }}
+      </div>
+    {{/if}}
+    {{#if (defined system.preferredPronouns)}}
+      <div>
+        <label>{{localize "GFv1.actor.preferredPronouns"}}</label>
+        {{formInput
+          systemFields.preferredPronouns
+          value=system.preferredPronouns
+          disabled=locked
+        }}
+      </div>
+    {{/if}}
+    {{#if (defined system.framePronouns)}}
+      <div>
+        <label>{{localize "GFv1.actor.framePronouns"}}</label>
+        {{formInput
+          systemFields.framePronouns
+          value=system.framePronouns
+          disabled=locked
+        }}
+      </div>
+    {{/if}}
   </div>
 </header>

@@ -9,7 +9,9 @@ const schema = {
   description: new HTMLField(),
   permissions: new NumberField({ required: true, min: 0, initial: 0, step: 1 }),
   heat: new NumberField({ required: true, min: 0, initial: 0, step: 1 }),
-  pronouns: new StringField({ required: true, initial: "it/its" }),
+  legalPronouns: new StringField({ required: true, initial: "it/its" }),
+  preferredPronouns: new StringField({ required: true, initial: "" }),
+  framePronouns: new StringField({ required: true, initial: "she/her" }),
   _framePlaybook: new StringField({ required: true, initial: "No Playbook" }),
   _pilotPlaybook: new StringField({ required: true, initial: "No Playbook" }),
 };

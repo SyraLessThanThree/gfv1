@@ -127,6 +127,9 @@
         "apperance": "Apperance"
       },
       "pronouns": "Pronouns",
+      "legalPronouns": "Legal Pronouns",
+      "preferredPronouns": "Preferred Pronouns",
+      "framePronouns": "Frame's Pronouns",
       "heat": "Heat"
     },
     "settings": {
