@@ -60,7 +60,7 @@ export default class BasicRoll extends Roll {
   async toMessage(actor) {
     if (!this._evaluated) await this.evaluate();
     if(game.dice3d) await this.show3dDice(this.diceResults);
-    const description = await actor.enrichedDescription(false);
+    const description = await this.item.enrichedDescription(false);
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor }),
       sound: CONFIG.sounds.dice,
